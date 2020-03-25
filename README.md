@@ -10,27 +10,27 @@
 <details>
   <summary>Jenkins</summary>
 
-#### CircleCI
+#### Jenkins
 .
 </details>
 
 <details>
   <summary>Travis</summary>
 
-#### CircleCI
+#### Travis
 .
 </details>
 
 <details>
   <summary>Github Actions</summary>
 
-#### CircleCI
+#### Github Actions
 .
 </details>
 
 <details>
   <summary>Cloud Build</summary>
 
-#### CircleCI
+#### Cloud Build
 .
 </details>
