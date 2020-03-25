@@ -1,9 +1,36 @@
 # Trivy setup in CI/CD
 
-# # Circle CI
+<details>
+  <summary>CircleCI</summary>
 
-# # Jenkins
+#### CircleCI
+.
+<details>
 
-# # Travis
+<details>
+  <summary>Jenkins</summary>
 
-# # Github Actions
+#### CircleCI
+.
+<details>
+
+<details>
+  <summary>Travis</summary>
+
+#### CircleCI
+.
+<details>
+
+<details>
+  <summary>Github Actions</summary>
+
+#### CircleCI
+.
+<details>
+
+<details>
+  <summary>Cloud Build</summary>
+
+#### CircleCI
+.
+<details>
