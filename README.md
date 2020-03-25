@@ -5,32 +5,32 @@
 
 #### CircleCI
 .
-<details>
+</details>
 
 <details>
   <summary>Jenkins</summary>
 
 #### CircleCI
 .
-<details>
+</details>
 
 <details>
   <summary>Travis</summary>
 
 #### CircleCI
 .
-<details>
+</details>
 
 <details>
   <summary>Github Actions</summary>
 
 #### CircleCI
 .
-<details>
+</details>
 
 <details>
   <summary>Cloud Build</summary>
 
 #### CircleCI
 .
-<details>
+</details>
