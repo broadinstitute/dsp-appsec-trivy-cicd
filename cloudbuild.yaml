@@ -5,6 +5,6 @@ steps:
       images:
       - 'us.gcr.io/dsp-appsec-dev/example-app'
 
-    - id: Scan image
-      name: gcr.io/cloud-builders/docker
-      args: ['run', '--rm', '-v', '/var/run/docker.sock:/var/run/docker.sock', '-v', '$HOME/Library/Caches:/root/.cache/', 'aquasec/trivy', 'us.gcr.io/dsp-appsec-dev/example-app:latest']
+    # - id: Scan image
+    #   name: gcr.io/cloud-builders/docker
+    #   args: ['run', '--rm', '-v', '/var/run/docker.sock:/var/run/docker.sock', '-v', '$HOME/Library/Caches:/root/.cache/', 'aquasec/trivy', 'us.gcr.io/dsp-appsec-dev/example-app:latest']
