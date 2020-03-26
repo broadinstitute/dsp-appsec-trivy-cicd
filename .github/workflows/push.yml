@@ -1,0 +1,27 @@
+name: Scan & Push
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Docker Build
+        uses: benjlevesque/actions-docker-gcr/build@master
+        env:
+          IMAGE: dsp-appsec-dev/example-app
+          GCLOUD_REGISTRY: us.gcr.io
+
+      - name: Scan Image
+        uses: docker://aquasec/trivy
+        with:
+          args: --severity CRITICAL --no-progress us.gcr.io/dsp-appsec-dev/example-app
+
+      - name: Docker Push
+        uses: benjlevesque/actions-docker-gcr/push@master
+        env:
+          IMAGE: dsp-appsec-dev/example-app
+          GCLOUD_REGISTRY: us.gcr.io
+          GCLOUD_SERVICE_ACCOUNT_KEY: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
