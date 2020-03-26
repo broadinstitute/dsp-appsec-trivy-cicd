@@ -1,6 +1,5 @@
 jobs:
   build:
-    machine: true
     docker:
       - image: google/cloud-sdk
       - image: docker:18.09-git
