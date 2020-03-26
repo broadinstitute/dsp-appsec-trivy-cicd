@@ -1,24 +1,34 @@
 jobs:
   build:
+    docker:
+      - image: docker:18.09-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Build image
+          command: docker build -t us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1} .
+      - run:
+          name: Install trivy
+          command: |
+            apk add --update-cache --upgrade --update curl
+            curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
+      - run:
+          name: Scan the local image with trivy (light)
+          command: trivy --exit-code 0 --no-progress us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1}
+  push:
     machine: true
     steps:
       - checkout
       - run: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
-      - run:
-         name: Build image
-         command: docker build -t us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1} .
-      - run:
-         name: Install trivy
-         command: |
-           apk add --update-cache --upgrade --update curl
-           curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
-      - run:
-         name: Scan the local image with trivy (light)
-         command: trivy --exit-code 0 --no-progress us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1}
+      - run: docker build -t us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1} .
       - run: gcloud auth activate-service-account circleci@dsp-appsec-dev.iam.gserviceaccount.com --key-file ${HOME}/gcp-key.json
       - run: gcloud docker -- push us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1}
 workflows:
   version: 2
-  release:
+  build-and-push-image:
     jobs:
       - build
+      - push:
+         requires:
+           - build
