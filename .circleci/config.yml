@@ -18,7 +18,7 @@ jobs:
             curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
       - run:
           name: Scan the local image with trivy (light)
-          command: trivy --exit-code 0 --no-progress example-app:${CIRCLE_SHA1}
+          command: trivy --exit-code 0 --no-progress example-app-test:${CIRCLE_SHA1}
       - run: 
           gcloud docker -- push us.gcr.io/dsp-appsec-dev/example-app-test:$CIRCLE_SHA1
 workflows:
