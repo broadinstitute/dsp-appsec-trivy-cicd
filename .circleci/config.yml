@@ -16,15 +16,13 @@ jobs:
       - run:
           name: Scan the local image with trivy (light)
           command: trivy --exit-code 0 --no-progress example-app-test:${CIRCLE_SHA1}
-
   push:
     docker:
       - image: google/cloud-sdk
     steps:
       - checkout
-      - run:  echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
-      - run:
-          name: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
+      - run: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+      - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
       - run: gcloud docker -- push us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1}
 
 workflows:
