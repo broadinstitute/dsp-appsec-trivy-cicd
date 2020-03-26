@@ -7,6 +7,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+          command: touch ${HOME}/gcp-key.json
+      - run:
           command: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
       - run:
           name: Build image
