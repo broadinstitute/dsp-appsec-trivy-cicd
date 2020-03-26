@@ -25,7 +25,7 @@ jobs:
       - run: gcloud auth activate-service-account circleci@dsp-appsec-dev.iam.gserviceaccount.com --key-file ${HOME}/gcp-key.json
   push:
     docker:
-      - image: docker:18.09-git
+      - image: google/cloud-sdk
     steps:
       - checkout
       - run: gcloud docker -- push us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1}
