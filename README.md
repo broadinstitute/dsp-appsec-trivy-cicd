@@ -23,6 +23,8 @@ Show just critical and high vulnerabilities
 
 ####Github Actions
 
+
+
  There are two workflows in `.github/workflows` folder:
 
    - `scan.yml` workflow builds and scans an image.
