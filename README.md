@@ -32,14 +32,14 @@ Show just critical and high vulnerabilities
 - Generate a key for this Service Account
 - Create a SECRET in your repository named `GCLOUD_SERVICE_ACCOUNT_KEY` with the value of :
   
-    ⋅⋅*  `cat path-to/key.json | base64 -b 0` for MacOS 
+  -  `cat path-to/key.json | base64 -b 0` for MacOS 
 
-    ⋅⋅*  `cat path-to/key.json | base64 -w 0` for Linux 
+  -  `cat path-to/key.json | base64 -w 0` for Linux 
 
   Job will fail when critical and high vulnerabilties are found, if one of the options is used:
 
-    - `args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${GOOGLE_PROJECT}/${YOUR_IMAGE}` 
-    - `args: --exit-code 0 --severity MEDIUM,LOW --no-progress us.gcr.io/${GOOGLE_PROJECT}/${YOUR_IMAGE}`
+- `args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${GOOGLE_PROJECT}/${YOUR_IMAGE}` 
+- `args: --exit-code 0 --severity MEDIUM,LOW --no-progress us.gcr.io/${GOOGLE_PROJECT}/${YOUR_IMAGE}`
 
 </details>
 
