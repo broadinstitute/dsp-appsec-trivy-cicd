@@ -11,8 +11,14 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
+         echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
+      - run:
           name: Build image
-          command: docker build -t example-app:${CIRCLE_SHA1} .
+          command: docker build -t us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1} .
+      - run: 
+          gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
+      - run: 
+          gcloud --quiet config set project ${GCP_PROJECT}
       - run:
           name: Install trivy
           command: |
@@ -21,6 +27,8 @@ jobs:
       - run:
           name: Scan the local image with trivy (light)
           command: trivy --exit-code 0 --no-progress example-app:${CIRCLE_SHA1}
+      - run: 
+          gcloud docker -- push us.gcr.io/dsp-appsec-dev/example-app-test:$CIRCLE_SHA1
 workflows:
   version: 2
   release:
