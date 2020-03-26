@@ -18,8 +18,6 @@ jobs:
           command: trivy --exit-code 0 --no-progress us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1}
   push:
     machine: true
-    docker:
-      - image: google/cloud-sdk 
     steps:
       - checkout
       - run: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
