@@ -1,0 +1,29 @@
+name: Scan and push
+on: [push]
+
+jobs:
+  build:
+    container: docker:18.09-git
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Docker Build
+        uses: benjlevesque/actions-docker-gcr/build@master
+        env:
+          IMAGE: dsp-appsec-dev/example-app
+          GCLOUD_REGISTRY: us.gcr.io
+
+      - name: Install Trivy 
+        run: apk add --update-cache --upgrade --update curl | curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
+
+      - name: Scan Image
+        run: trivy --exit-code 0 --no-progress us.gcr.io/dsp-appsec-dev/example-app
+
+      - name: Docker Push
+        uses: benjlevesque/actions-docker-gcr/push@master
+        env:
+          IMAGE: dsp-appsec-dev/example-app
+          GCLOUD_REGISTRY: us.gcr.io
+          GCLOUD_SERVICE_ACCOUNT_KEY: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
