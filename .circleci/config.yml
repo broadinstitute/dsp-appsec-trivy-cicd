@@ -19,6 +19,7 @@ jobs:
   push:
     docker:
       - image: google/cloud-sdk
+      - image: docker:18.09-git
     steps:
       - checkout
       - run: echo ${GOOGLE_AUTH} > ${HOME}/gcp-key.json
