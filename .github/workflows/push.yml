@@ -17,7 +17,7 @@ jobs:
       - name: Scan Image
         uses: docker://aquasec/trivy
         with:
-          args: --severity CRITICAL --no-progress us.gcr.io/dsp-appsec-dev/example-app
+          args: --no-progress us.gcr.io/dsp-appsec-dev/example-app
 
       - name: Docker Push
         uses: benjlevesque/actions-docker-gcr/push@master
