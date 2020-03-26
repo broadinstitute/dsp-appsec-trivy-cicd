@@ -9,8 +9,6 @@ jobs:
       - run:
           name: Build image
           command: docker build -t us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1} .
-      - run: 
-          command: gcloud auth activate-service-account --key-file ${GOOGLE_AUTH}
       - run:
           name: Install trivy
           command: apk add --update-cache --upgrade --update curl | curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/master/contrib/install.sh | sh -s -- -b /usr/local/bin
