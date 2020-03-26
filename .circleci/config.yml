@@ -16,8 +16,6 @@ jobs:
       - run:
           name: Build image
           command: docker build -t us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1} .
-      - run: 
-          gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
       - run:
           name: Install trivy
           command: |
