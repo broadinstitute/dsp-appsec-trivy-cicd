@@ -17,7 +17,7 @@ jobs:
           name: Scan the local image with trivy (light)
           command: trivy --exit-code 0 --no-progress example-app-test:${CIRCLE_SHA1}
 
-  push-image:
+  push:
     docker:
       - image: google/cloud-sdk
     steps:
@@ -32,6 +32,6 @@ workflows:
   release:
     jobs:
       - build
-      - push-image:
+      - push:
         requires:
           - build
