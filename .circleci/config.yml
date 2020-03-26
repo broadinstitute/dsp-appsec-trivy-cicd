@@ -6,8 +6,8 @@ orbs:
 jobs:
   build:
     docker:
-      - image: docker:18.09-git
       - image: google/cloud-sdk
+      - image: docker:18.09-git
     steps:
       - checkout
       - setup_remote_docker
@@ -18,8 +18,6 @@ jobs:
           command: docker build -t us.gcr.io/dsp-appsec-dev/example-app-test:${CIRCLE_SHA1} .
       - run: 
           gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
-      - run: 
-          gcloud --quiet config set project ${GCP_PROJECT}
       - run:
           name: Install trivy
           command: |
