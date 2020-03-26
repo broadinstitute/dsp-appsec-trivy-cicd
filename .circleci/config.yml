@@ -7,6 +7,7 @@ jobs:
   build:
     docker:
       - image: docker:18.09-git
+      - image: google/cloud-sdk
     steps:
       - checkout
       - setup_remote_docker
