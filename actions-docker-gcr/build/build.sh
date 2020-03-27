@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 : ${GCLOUD_REGISTRY:=us.gcr.io}
 : ${IMAGE:=$GITHUB_REPOSITORY}
@@ -9,10 +9,11 @@ set -e
 : ${LATEST:=true}
 
 docker build -t $IMAGE:$TAG .
-docker tag $IMAGE:$TAG $GCLOUD_REGISTRY/$IMAGE:$TAG
 
 if [ $LATEST = true ]; then
   docker tag $IMAGE:$TAG $GCLOUD_REGISTRY/$IMAGE:latest
+else 
+  docker tag $IMAGE:$TAG $GCLOUD_REGISTRY/$IMAGE:$TAG
 fi
 
 if [ "$DEFAULT_BRANCH_TAG" = "true" ]; then

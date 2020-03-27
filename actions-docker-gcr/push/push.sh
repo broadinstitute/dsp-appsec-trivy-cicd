@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -euo pipefail
 
 : ${GCLOUD_REGISTRY:=us.gcr.io}
 : ${IMAGE:=$GITHUB_REPOSITORY}
@@ -13,11 +13,11 @@ if [ -n "${GCLOUD_SERVICE_ACCOUNT_KEY}" ]; then
   gcloud auth activate-service-account --quiet --key-file /tmp/key.json
   gcloud auth configure-docker --quiet
 else
-  echo "GCLOUD_SERVICE_ACCOUNT_KEY was empty, not performing auth" 1>&2
+  echo "GCLOUD_SERVICE_ACCOUNT_KEY was empty, not performing auth, please set a secret in your repo" 1>&2
 fi
-
-docker push $GCLOUD_REGISTRY/$IMAGE:$TAG
 
 if [ $LATEST = true ]; then
   docker push $GCLOUD_REGISTRY/$IMAGE:latest
+else
+  docker push $GCLOUD_REGISTRY/$IMAGE:$TAG
 fi
