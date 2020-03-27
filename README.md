@@ -1,8 +1,10 @@
 ## Setup Trivy in CI/CD tools 
 
 Trivy is an image vulnerability scanner. Detects vulnerabilties in OS packages and application dependencies.
+  
 
-### Test trivy in MacOS
+### Test trivy in MacOS 
+
 
 Pull image: 
 
