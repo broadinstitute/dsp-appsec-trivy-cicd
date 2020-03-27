@@ -5,15 +5,21 @@ Before pushing an image to a container registry, scan with Trivy.
 
 Pull image: 
 
-`docker pull aquasec/trivy`
+```
+docker pull aquasec/trivy
+```
 
 Scan your image:
 
-`docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy [YOUR_IMAGE_NAME]`
+```
+docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy [YOUR_IMAGE_NAME]
+```
 
 Show just critical and high vulnerabilities 
 
-`docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --severity HIGH,CRITICAL [YOUR_IMAGE_NAME]` 
+```
+docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --severity HIGH,CRITICAL [YOUR_IMAGE_NAME]
+``` 
 
 
 ## Setup Trivy in CI/CD tools 
@@ -75,12 +81,6 @@ Workflow will fail if there are critical vulnerabilities found by Trivy.
 
 </details>
 
-<details>
-  <summary>Jenkins</summary>
-
-#### Jenkins
-
-</details>
 
 
 
