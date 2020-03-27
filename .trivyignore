@@ -1,2 +1,5 @@
-# Ignore vulnerability
+#  This vulnerability doesn't have impact in our settings
 CVE-2019-18276
+
+#  This vulnerability doesn't have impact in our settings
+CVE-2016-2779 
