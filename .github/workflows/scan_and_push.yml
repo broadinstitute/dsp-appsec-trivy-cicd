@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Docker Build
-        uses: benjlevesque/actions-docker-gcr/build@master
+        uses: broadinstitute/actions-docker-gcr/build@master
         env:
           IMAGE: dsp-appsec-dev/example-app
           GCLOUD_REGISTRY: us.gcr.io
@@ -20,7 +20,7 @@ jobs:
           args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/dsp-appsec-dev/example-app
 
       - name: Docker Push
-        uses: benjlevesque/actions-docker-gcr/push@master
+        uses: broadinstitute/actions-docker-gcr/push@master
         env:
           IMAGE: dsp-appsec-dev/example-app
           GCLOUD_REGISTRY: us.gcr.io
