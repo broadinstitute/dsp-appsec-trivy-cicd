@@ -17,7 +17,7 @@ jobs:
       - name: Scan Image
         uses: docker://aquasec/trivy
         with:
-          args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/dsp-appsec-dev/example-app
+          args: --severity CRITICAL,HIGH --no-progress us.gcr.io/dsp-appsec-dev/example-app
 
       - name: Docker Push
         uses: broadinstitute/trivy-cicd/actions-docker-gcr/push@master
