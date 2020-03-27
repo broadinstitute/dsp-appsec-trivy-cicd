@@ -1,5 +1,6 @@
+## Setup Trivy in CI/CD tools 
+
 Trivy is an image vulnerability scanner. Detects vulnerabilties in OS packages and application dependencies.
-Before pushing an image to a container registry, scan with Trivy.  
 
 ### Test trivy in MacOS
 
@@ -21,8 +22,6 @@ Show just critical and high vulnerabilities
 docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --severity HIGH,CRITICAL [YOUR_IMAGE_NAME]
 ``` 
 
-
-## Setup Trivy in CI/CD tools 
 
 <details>
   <summary>Github Actions</summary>
