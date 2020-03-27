@@ -23,8 +23,6 @@ docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --severity H
 ``` 
 
 
-<details>
-  <summary>Github Actions</summary>
 
 #### Github Actions
 
@@ -48,10 +46,7 @@ Job will fail when critical and high vulnerabilties are found, if one of the opt
 - `args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${GOOGLE_PROJECT}/${YOUR_IMAGE}` 
 - `args: --exit-code 0 --severity MEDIUM,LOW --no-progress us.gcr.io/${GOOGLE_PROJECT}/${YOUR_IMAGE}`
 
-</details>
 
-<details>
-  <summary>CircleCI</summary>
 
 #### CircleCI
 
@@ -65,11 +60,6 @@ Setup circleCi project to push an image in GCR:
  - Create an environment variable in CircleCI project, name it `GOOGLE_AUTH` and include private key in Json format.  
 
 
-</details>
-
-
-<details>
-  <summary>Travis</summary>
 
 #### Travis
 
@@ -78,7 +68,7 @@ Setup circleCi project to push an image in GCR:
 Workflow will fail if there are critical vulnerabilities found by Trivy. 
 
 
-</details>
+
 
 
 
