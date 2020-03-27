@@ -1,4 +1,4 @@
-Trivy is a vulnerability scanner for containers. Detects vulnerabilties in OS packages and application dependencies.
+Trivy is an image vulnerability scanner. Detects vulnerabilties in OS packages and application dependencies.
 Before pushing an image to a container registry, scan with Trivy.  
 
 ### Test trivy in MacOS
@@ -62,6 +62,19 @@ Setup circleCi project to push an image in GCR:
 
 </details>
 
+
+<details>
+  <summary>Travis</summary>
+
+#### Travis
+
+`travis.yml` builds an image and scans it with Trivy.
+
+Workflow will fail if there are critical vulnerabilities found by Trivy. 
+
+
+</details>
+
 <details>
   <summary>Jenkins</summary>
 
@@ -69,11 +82,5 @@ Setup circleCi project to push an image in GCR:
 
 </details>
 
-<details>
-  <summary>Travis</summary>
-
-#### Travis
-
-</details>
 
 
