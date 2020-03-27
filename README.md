@@ -71,6 +71,20 @@ Workflow will fail if there are critical vulnerabilities found by Trivy.
 
 
 
+### Mark a vulnerability as false positive (FP)
+
+- Create a file `.trivyignore`.
+- Add `VULNERABILITY ID` of the vulnerability you want to mark as FP and comment the reason. 
+
+ ```
+ #  This vulnerability doesn't have impact in our settings
+CVE-2019-18276
+
+#  This vulnerability doesn't have impact in our settings too
+CVE-2016-2779 
+ ```
+
+
 
 
 
