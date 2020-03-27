@@ -24,7 +24,7 @@ docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --severity H
 
 
 
-#### Github Actions
+### Github Actions
 
  There are two workflows in `.github/workflows` folder:
 
@@ -48,7 +48,7 @@ Job will fail when critical and high vulnerabilties are found, if one of the opt
 
 
 
-#### CircleCI
+### CircleCI
 
   `.circleci` folder has 2 workflows: 
    - `config_test_only.yml` worlkflow builds and scans an image
@@ -61,7 +61,7 @@ Setup circleCi project to push an image in GCR:
 
 
 
-#### Travis
+### Travis
 
 `travis.yml` builds an image and scans it with Trivy.
 
