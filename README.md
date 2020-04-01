@@ -1,6 +1,6 @@
 ## Setup Trivy in CI/CD tools 
 
-Trivy is an image vulnerability scanner. Detects vulnerabilties in OS packages and application dependencies.
+Trivy is an image vulnerability scanner. It detects vulnerabilties in OS packages and application dependencies. 
   
 
 ### Test trivy in MacOS 
@@ -53,8 +53,8 @@ Job will fail when critical and high vulnerabilties are found, if one of the opt
 ### CircleCI
 
   `.circleci` folder has 2 workflows: 
-   - `config_test_only.yml` worlkflow builds and scans an image
-   - `config.yml` workflow builds scans image with TRIVY and push the image in GCR if scan doesn't exit with `--exit-code 1 ` 
+   - `config_test_only.yml` worlkflow builds and scans an image.
+   - `config.yml` workflow builds, scans the image with TRIVY and push that image in GCR if scan doesn't exit with `--exit-code 1 `.
 
 Setup circleCi project to push an image in GCR:
  - Create a service account
