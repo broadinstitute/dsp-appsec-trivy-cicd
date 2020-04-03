@@ -18,10 +18,10 @@ jobs:
         with:
           args: --severity CRITICAL,HIGH --no-progress dsp-appsec-trivy-cicd
 
-      - name: Docker Push
+      - name: Docker Push to Dockerhub
         uses: broadinstitute/dsp-appsec-actions-docker-gcr/push_dockerhub@master
         env:
           IMAGE: dsp-appsec-trivy-cicd
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          DOCKERHUB_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
+          DOCKERHUB_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
           
