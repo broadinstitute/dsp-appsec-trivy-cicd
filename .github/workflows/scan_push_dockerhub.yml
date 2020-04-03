@@ -1,4 +1,4 @@
-name: Scan & Push
+name: Scan & Push to Dockerhub
 on: [push, pull_request]
 
 jobs:
