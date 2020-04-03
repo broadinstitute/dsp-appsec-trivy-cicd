@@ -21,7 +21,7 @@ jobs:
       - name: Docker Push to Dockerhub
         uses: broadinstitute/dsp-appsec-actions-docker-gcr/push_dockerhub@master
         env:
-          IMAGE: broadinstitute/dsp-appsec-trivy-cicd
+          IMAGE: ${{secrets.DOCKERHUB_USERNAME}}/dsp-appsec-trivy-cicd
           DOCKERHUB_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
           DOCKERHUB_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
           
