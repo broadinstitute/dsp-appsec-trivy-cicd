@@ -1,0 +1,27 @@
+name: Scan & Push
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Docker Build
+        uses: broadinstitute/dsp-appsec-actions-docker-gcr/build@master
+        env:
+          IMAGE: dsp-appsec-trivy-cicd
+
+      - name: Scan Image
+        uses: docker://aquasec/trivy
+        with:
+          args: --severity CRITICAL,HIGH --no-progress dsp-appsec-trivy-cicd
+
+      - name: Docker Push
+        uses: broadinstitute/dsp-appsec-actions-docker-gcr/push_dockerhub@master
+        env:
+          IMAGE: dsp-appsec-trivy-cicd
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+          
