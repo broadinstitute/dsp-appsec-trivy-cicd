@@ -11,18 +11,18 @@ jobs:
       - name: Docker Build
         uses: broadinstitute/dsp-appsec-actions-docker-gcr/build@master
         env:
-          IMAGE: ${{ secrets.YOUR_GOOGLE_PROJECT }}}/example-app
+          IMAGE: ${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
           GCLOUD_REGISTRY: us.gcr.io
 
       - name: Scan Image
         uses: docker://aquasec/trivy
         with:
-          args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${{ secrets.YOUR_GOOGLE_PROJECT }}/example-app
+          args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
 
       - name: Docker Push
         uses: broadinstitute/dsp-appsec-actions-docker-gcr/push@master
         env:
-          IMAGE: ${{ secrets.YOUR_GOOGLE_PROJECT }}/example-app
+          IMAGE: ${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
           GCLOUD_REGISTRY: us.gcr.io
           GCLOUD_SERVICE_ACCOUNT_KEY: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
           
