@@ -17,7 +17,7 @@ jobs:
       - name: Scan Image
         uses: docker://aquasec/trivy
         with:
-          args: --severity CRITICAL,HIGH --no-progress ${{secrets.DOCKERHUB_USERNAME}}/dsp-appsec-trivy-cicd
+          args: --exit-code 1 --severity CRITICAL,HIGH --no-progress ${{secrets.DOCKERHUB_USERNAME}}/dsp-appsec-trivy-cicd
 
       - name: Docker Push to Dockerhub
         uses: broadinstitute/dsp-appsec-actions-docker-gcr/push_dockerhub@master
