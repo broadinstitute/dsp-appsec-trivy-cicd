@@ -31,7 +31,8 @@ docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --severity H
  There are two workflows in `.github/workflows` folder:
 
    - `scan.yml` workflow builds and scans an image.
-   - `scan_and_push.yml` workflow builds, scans and pushes an image in Google Container Registry. 
+   - `scan_and_push.yml` workflow builds, scans and pushes an image in Google Container Registry.
+   - `scan_push_dockerhub.yml` workflow build, scans and pushes an image in DockerHub. 
  
  When using `scan_and_push.yml` please make sure you have setup Google Container Registry.
 - Create a Service Account
@@ -49,6 +50,12 @@ Job will fail when critical and high vulnerabilties are found, if one of the opt
 
 - `args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${GOOGLE_PROJECT}/${YOUR_IMAGE}` 
 - `args: --exit-code 0 --severity MEDIUM,LOW --no-progress us.gcr.io/${GOOGLE_PROJECT}/${YOUR_IMAGE}`
+
+
+When using `scan_push_dockerhub.yml` please make sure to create two secrets in your repository: 
+
+ - `DOCKER_USERNAME`
+ - `DOCKER_PASSWORD`
 
 
 
