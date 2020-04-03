@@ -12,6 +12,7 @@ jobs:
         uses: broadinstitute/dsp-appsec-actions-docker-gcr/build_dockerhub@master
         env:
           IMAGE: dsp-appsec-trivy-cicd
+          DOCKERHUB_USERNAME: ${{secrets.DOCKERHUB_USERNAME}}
 
       - name: Scan Image
         uses: docker://aquasec/trivy
