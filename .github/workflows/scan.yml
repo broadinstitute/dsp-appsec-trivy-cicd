@@ -7,8 +7,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Build
-      run: docker build -t us.gcr.io/${YOUR_GOOGLE_PROJECT}/example-app:latest .
+      run: docker build -t us.gcr.io/${{ secrets.YOUR_GOOGLE_PROJECT }}/example-app:latest .
     - name: Scan
       uses: docker://aquasec/trivy
       with:
-        args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${YOUR_GOOGLE_PROJECT}/example-app
+        args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${{ secrets.YOUR_GOOGLE_PROJECT }}/example-app
