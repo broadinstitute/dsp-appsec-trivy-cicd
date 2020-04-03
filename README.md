@@ -62,7 +62,10 @@ Setup circleCi project to push an image in GCR:
  - Create a service account
  - Generated private key in JSON format
  - Create an environment variable in CircleCI project, name it `GOOGLE_AUTH` and include private key in Json format.  
- - Create an environement variable in CircleCI project, name it `YOUR_GOOGLE_PROJECT` and include your Google project id. 
+ - Create an environement variable in CircleCI project, name it `YOUR_GOOGLE_PROJECT` and include your Google project id value :
+ 
+  - `echo -n 'GOOGLE_PROJECT_ID' | base64` 
+
 
 
 
