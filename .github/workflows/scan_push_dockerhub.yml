@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Docker Build
-        uses: broadinstitute/dsp-appsec-actions-docker-gcr/build@master
+        uses: broadinstitute/dsp-appsec-actions-docker-gcr/build_dockerhub@master
         env:
           IMAGE: dsp-appsec-trivy-cicd
 
