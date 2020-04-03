@@ -1,0 +1,28 @@
+name: Scan & Push to GCR
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Docker Build
+        uses: broadinstitute/dsp-appsec-actions-docker-gcr/build_gcr@master
+        env:
+          IMAGE: ${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
+          GCLOUD_REGISTRY: us.gcr.io
+
+      - name: Scan Image
+        uses: docker://aquasec/trivy
+        with:
+          args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
+
+      - name: Docker Push
+        uses: broadinstitute/dsp-appsec-actions-docker-gcr/push_gcr@master
+        env:
+          IMAGE: ${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
+          GCLOUD_REGISTRY: us.gcr.io
+          GCLOUD_SERVICE_ACCOUNT_KEY: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
+          
