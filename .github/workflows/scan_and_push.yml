@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v1
 
       - name: Docker Build
-        uses: broadinstitute/dsp-appsec-actions-docker-gcr/build@master
+        uses: broadinstitute/dsp-appsec-actions-docker-gcr/build_gcr@master
         env:
           IMAGE: ${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
           GCLOUD_REGISTRY: us.gcr.io
@@ -20,9 +20,9 @@ jobs:
           args: --exit-code 1 --severity CRITICAL,HIGH --no-progress us.gcr.io/${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
 
       - name: Docker Push
-        uses: broadinstitute/dsp-appsec-actions-docker-gcr/push@master
+        uses: broadinstitute/dsp-appsec-actions-docker-gcr/push_gcr@master
         env:
           IMAGE: ${{secrets.YOUR_GOOGLE_PROJECT}}/example-app
           GCLOUD_REGISTRY: us.gcr.io
-          GCLOUD_SERVICE_ACCOUNT_KEY: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }}
+          GCLOUD_SERVICE_ACCOUNT_KEY: ${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY }} 
           
