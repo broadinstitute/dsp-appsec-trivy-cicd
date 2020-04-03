@@ -43,7 +43,7 @@ docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy --severity H
 
   -  `cat path-to/key.json | base64 -w 0` for Linux 
 
-- Create a SECRET in your repository named `YOUR_GOOGLE_PROJECT` with the value of your Google project-id
+- Create a SECRET in your repository named `YOUR_GOOGLE_PROJECT` with the value of your Google project-id. 
 
 Job will fail when critical and high vulnerabilties are found, if one of the options is used:
 
@@ -62,10 +62,7 @@ Setup circleCi project to push an image in GCR:
  - Create a service account
  - Generated private key in JSON format
  - Create an environment variable in CircleCI project, name it `GOOGLE_AUTH` and include private key in Json format.  
- - Create an environement variable in CircleCI project, name it `YOUR_GOOGLE_PROJECT` and include your Google project id value :
- 
-  - `echo GOOGLE_PROJECT_ID | base64 -b 0` 
-
+ - Create an environement variable in CircleCI project, name it `YOUR_GOOGLE_PROJECT` and include your Google project id value 
 
 
 
