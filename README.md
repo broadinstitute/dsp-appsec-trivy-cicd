@@ -57,7 +57,7 @@ When using `scan_push_dockerhub.yml` please make sure to create two secrets in y
  - `DOCKER_USERNAME`
  - `DOCKER_PASSWORD`
 
-
+Find [here](https://github.com/broadinstitute/dsp-appsec-actions-docker-gcr) Github Actions code used for bulding and pushing images to GCR and Dockerhub.
 
 ### CircleCI
 
