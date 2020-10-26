@@ -94,8 +94,14 @@ CVE-2019-18276
 CVE-2016-2779 
  ```
 
+If your image is built via a script in a CI/CD tool (e.g Jenkins), please make sure to mount `.trivyignore` file.
 
+Add  `-v "$PWD/.trivyignore":/.trityignore:ro  --ignorefile /.trivyignore`
 
+```
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME"/Library/Caches:/root/.cache/ -v "$PWD/.trivyignore":/.trivyignore:ro aquasec/trivy --exit-code 1 --severity CRITICAL --ignorefile /.trivyignore "$IMAGE_NAME":"$TAG"
+
+```
 
 
 
