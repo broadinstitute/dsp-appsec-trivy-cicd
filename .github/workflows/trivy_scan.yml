@@ -2,13 +2,13 @@ name: Trivy
 on: [pull_request]
 jobs:
   build:
-    name: Scan for Vulnerabilities
+    name: TRIVY Security Scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build an image from Dockerfile
+      - name: Build an image from Dockerfile [REQUIRED STEP]
         run: |
           docker build -t ${{secrets.YOUR_GOOGLE_PROJECT}}:${{ github.sha }} .
 
